@@ -1,4 +1,4 @@
-version: "3.9"
+
 services:
   redis:
     image: redis:alpine
@@ -13,6 +13,7 @@ services:
       - redis
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     ports:
       - "8000:8000"
 
@@ -21,11 +22,17 @@ services:
     container_name: worker1
     depends_on:
       - redis
-    command: celery -A celery_worker.celery worker --loglevel=info --hostname=worker1@%h
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    command: celery -A celery_worker.celery_app worker --loglevel=info --hostname=worker1@%h
 
   worker2:
     build: ./master
     container_name: worker2
     depends_on:
       - redis
-    command: celery -A celery_worker.celery worker --loglevel=info --hostname=worker2@%h
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    command: celery -A celery_worker.celery_app worker --loglevel=info --hostname=worker2@%h

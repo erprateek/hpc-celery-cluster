@@ -3,9 +3,9 @@ import os
 
 broker = os.getenv("CELERY_BROKER_URL", "redis://redis:6379/0")
 
-celery = Celery("tasks", broker=broker, backend=broker)
+celery_app = Celery("tasks", broker=broker, backend=broker)
 
-@celery.task
+@celery_app.task(name="celery_worker.add")
 def add(x, y):
     return x + y
 
