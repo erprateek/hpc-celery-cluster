@@ -14,11 +14,13 @@ This repo demonstrates a distributed task queue architecture using **FastAPI** (
 
 ```
 .
-├── celery_worker.py     # Defines the Celery app and task(s)
-├── main.py              # FastAPI app with task submission & status routes
-├── Dockerfile           # Builds app container
-├── docker-compose.yml   # Orchestrates FastAPI, Redis, and workers
-└── requirements.txt     # Python dependencies
+|── master
+|      |── celery_worker.py     # Defines the Celery app and task(s)
+|      ├── main.py              # FastAPI app with task submission & status routes
+|      ├── Dockerfile           # Builds app container
+|      └── requirements.txt     # Python dependencies
+└── docker-compose.yml   # Orchestrates FastAPI, Redis, and workers
+
 ```
 
 ## 🚀 How to Run
@@ -32,8 +34,8 @@ This repo demonstrates a distributed task queue architecture using **FastAPI** (
 ### 2. Clone the Repo
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/<USERNAME>/hpc-celery-cluster.git
+cd hpc-celery-cluster
 ```
 
 ### 3. Start the Cluster
