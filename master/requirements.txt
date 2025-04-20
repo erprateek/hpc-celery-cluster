@@ -1,3 +1,9 @@
 fastapi
 uvicorn
 celery[redis]
+pytest
+pytest-asyncio
+mypy
+types-redis
+pydantic
+httpx
