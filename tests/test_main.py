@@ -20,6 +20,7 @@ def test_add_task():
     for _ in range(10):
         result_response = client.get(f"/result/{task_id}")
         result_data = result_response.json()
+        print(result_data)
         if result_data.get("result") is not None:
             assert result_data["result"] == 10
             break
