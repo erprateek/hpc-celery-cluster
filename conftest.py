@@ -1,0 +1,2 @@
+CELERY_TASK_ALWAYS_EAGER = True  # newer versions
+CELERY_TASK_EAGER_PROPAGATES = True
