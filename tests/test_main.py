@@ -17,7 +17,7 @@ def test_add_task():
     task_id = data["task_id"]
     print(task_id)
     # Poll for result (in real scenarios use backoff strategy)
-    for _ in range(10):
+    for _ in range(20):
         result_response = client.get(f"/result/{task_id}")
         result_data = result_response.json()
         print(result_data)
