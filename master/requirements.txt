@@ -7,3 +7,4 @@ mypy
 types-redis
 pydantic
 httpx
+python-dotenv
